@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Messages</title>
+</head>
+<body>
+
+    {{#user}}
+        <h1>Logged in as: {{name}}</h1>
+        <form action="/create-message" method="post">
+            <input type="text" placeholder="Write a message" name="message"/>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>Messages created by {{name}}:</h2>
+
+        <ol>
+        {{#messageList}}
+            <li class="message">{{message}}</li>
+        {{/messageList}}
+        </ol>
+    {{/user}}
+
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+
+    <form action="/delete-message" method="post">
+        <input type="number" placeholder="Enter #" name="deleteNum"/>
+        <button type="submit">Delete</button>
+    </form>
+
+    <form action="/edit-message" method="post">
+        <input type="number" placeholder="Enter #" name="lineNum"/>
+        <input type="text" placeholder="Enter message" name="messageEdit"/>
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>
